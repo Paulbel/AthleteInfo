@@ -1,4 +1,5 @@
 
+import Model.TableModel;
 import View.MainWindow;
 
 
@@ -8,6 +9,7 @@ import View.MainWindow;
 public class EntryPoint {
     public static void main(String []args){
         System.out.print("LOL");
-        MainWindow m = new MainWindow();
+        TableModel model = new TableModel();
+        MainWindow m = new MainWindow(model);
     }
 }
