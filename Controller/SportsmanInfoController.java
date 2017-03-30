@@ -1,9 +1,9 @@
 package Controller;
 
+import Model.SportsmanModel;
 import Model.TableModelWithSportsman;
 import View.AddStudentDialog;
 import View.MainFrame;
-import View.TableViewSportsman;
 
 import javax.swing.*;
 
@@ -11,9 +11,12 @@ import javax.swing.*;
  * Created by Sinelnikov on 29.03.2017.
  */
 public class SportsmanInfoController {
+    private TableModelWithSportsman tableModelWithSportsman;
+    private MainFrame mainFrame;
     public void run() {
-        MainFrame mainFrame = new MainFrame(this);
-
+        tableModelWithSportsman = new TableModelWithSportsman();
+        mainFrame = new MainFrame(this);
+        mainFrame.refreshTable();
     }
 
     public void exit(JFrame frame){
@@ -22,7 +25,12 @@ public class SportsmanInfoController {
             System.exit(0);
         }
     }
+    public void addSportsman(SportsmanModel sportsman){
+        tableModelWithSportsman = mainFrame.getTableModelWithSportsman();
+        tableModelWithSportsman.addSportsman(sportsman);
+        mainFrame.refreshTable();
 
+    }
     public void openDialogAddingSportsman(){
         AddStudentDialog addDialog = new AddStudentDialog(this);
     }

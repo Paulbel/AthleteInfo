@@ -8,13 +8,25 @@ import java.util.List;
  * Created by Sinelnikov on 28.03.2017.
  */
 public class TableModelWithSportsman extends AbstractTableModel{
-    ArrayList<SportsmanModel> studentList;
+    List<SportsmanModel> studentList;
+    String columnName[] ={
+            "№",
+            "ФИО студента",
+            "Дата рождения",
+            "Футбольная команда",
+            "Факультет",
+            "Состав",
+            "Позиция",
+            "ЛОЛ"
+    };
     private int numberOfStudentsOnPage;
     private int pageNumber;
     public TableModelWithSportsman(){
         super();
-        pageNumber = 1;
-        studentList = new ArrayList<SportsmanModel>();
+
+        pageNumber = 2;
+        studentList = new ArrayList<>();
+
     }
     public List <SportsmanModel> getNextPage(){
         if(pageNumber+1<=this.getNumberOfPages()){
@@ -28,9 +40,8 @@ public class TableModelWithSportsman extends AbstractTableModel{
         this.pageNumber = pageNumber;
     }
 
-    public void addStudent(SportsmanModel student){
+    public void addSportsman(SportsmanModel student){
         studentList.add(student);
-        fireTableDataChanged();
     }
 
     public List <SportsmanModel> getPage(){
@@ -64,13 +75,19 @@ public class TableModelWithSportsman extends AbstractTableModel{
     }
 
     @Override
+    public String getColumnName(int column) {
+        return columnName[column];
+    }
+
+    @Override
     public int getRowCount() {
-        return numberOfStudentsOnPage;
+
+        return studentList.size();
     }
 
     @Override
     public int getColumnCount() {
-        return 8;
+        return 6;
     }
 
     @Override
@@ -78,31 +95,24 @@ public class TableModelWithSportsman extends AbstractTableModel{
         Object result = null;
         switch (columnIndex){
             case 0:
-                result = studentList.get(rowIndex).getFirstName();
+                result = studentList.get(rowIndex).getSecondName()+" "+studentList.get(rowIndex).getFirstName()+" "+studentList.get(rowIndex).getThirdName();
                 break;
             case 1:
-                result = studentList.get(rowIndex).getSecondName();
-                break;
-            case 2:
-                result = studentList.get(rowIndex).getThirdName();
-                break;
-            case 3:
                 result = studentList.get(rowIndex).getLineup();
                 break;
-            case 4:
+            case 2:
                 result = studentList.get(rowIndex).getTitleNumber();
                 break;
-            case 5:
-                result =  studentList.get(rowIndex).getFirstName();
+            case 3:
+                result =  studentList.get(rowIndex).getPosition();
                 break;
-            case 6:
+            case 4:
                 result = studentList.get(rowIndex).getSport();
                 break;
-            case 7:
+            case 5:
                 result = studentList.get(rowIndex).getRank();
                 break;
         }
         return result;
     }
-
 }
