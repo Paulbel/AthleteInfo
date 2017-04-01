@@ -1,13 +1,11 @@
-import Controller.SportsmanInfoController;
+import Controller.SportsmanInfo;
 
 /**
  * Created by Sinelnikov on 29.03.2017.
  */
 public class Main {
     public static void main(String []args){
-        //SportsmanInfoRunner runner = new SportsmanInfoRunner();
-       // runner.run();
-        SportsmanInfoController controller = new SportsmanInfoController();
+        SportsmanInfo controller = new SportsmanInfo();
         controller.run();
     }
 }

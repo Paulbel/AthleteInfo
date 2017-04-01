@@ -1,10 +1,9 @@
 package Controller;
 
+import Model.Sport;
 import Model.Sportsman;
-import View.TableModelWithSportsman;
-import View.AddSportsmanDialog;
-import View.MainFrame;
-import View.SportsmanTable;
+import Model.SportsmanInfoData;
+import View.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,12 +14,32 @@ import java.util.List;
  * Created by Sinelnikov on 29.03.2017.
  */
 public class SportsmanInfo {
-    private TableModelWithSportsman tableModelWithSportsman;
     private MainFrame mainFrame;
-    private List<Sportsman> sportsmanList;
+    //private List<Sportsman> sportsmanList;
+   // private SportList sportList;
+   // private PageWalker walker;
+    //private JScrollPane tablePanel;
+    SportsmanInfoData sportsmanInfoData;
     public void run() {
-        sportsmanList = new ArrayList<>();
-        mainFrame = new MainFrame(this);
+        sportsmanInfoData = new SportsmanInfoData();
+        Sport football = new Sport("Футбол", new String[]{"ВРТ", "ЦЗ", "ПЗ", "ЛЗ", "ЦП", "ЛП", "ПП", "ЦАП", "ФРВ"});
+        sportsmanInfoData.addSport(football);
+        sportsmanInfoData.addSport(new Sport("Хыккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
+        sportsmanInfoData.addSport(new Sport("Хиккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
+        sportsmanInfoData.addSport(new Sport("Хоккуй", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
+        sportsmanInfoData.addSport(new Sport("Хаккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
+
+
+
+
+
+/*        sportsmanList = new ArrayList<>();
+        sportList = new SportList();
+        walker = new PageWalker(sportsmanList);
+        sportList.addSportType("Футбол", new String[]{"ВРТ", "ЦЗ", "ПЗ", "ЛЗ", "ЦП", "ЛП", "ПП", "ЦАП", "ФРВ"});
+        sportList.addSportType("Хоккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"});
+        sportList.addSportType("Плавание", new String[]{"Нет"});
+        mainFrame = new MainFrame(this);*/
 
 
        // SportsmanTable sportsmanTable = new SportsmanTable(sportsmanList);
@@ -29,10 +48,10 @@ public class SportsmanInfo {
         sportsman.setFirstName("Павел");
         sportsman.setSecondName("Синельников");
         sportsman.setThirdName("Михайлович");
-        sportsman.setLineup("Основной");
-        sportsman.setPosition("ФРВ");
-        sportsman.setSport("Футбол");
-        sportsman.setRank("КМС");
+        sportsman.setSport(football);
+        sportsman.setLineup(0);
+        sportsman.setPosition(1);
+        sportsman.setRank(2);
         sportsman.setTitleNumber(2);
 
 
@@ -40,10 +59,10 @@ public class SportsmanInfo {
         sportsman1.setFirstName("Максим");
         sportsman1.setSecondName("Стельмаченок");
         sportsman1.setThirdName("Олегович");
-        sportsman1.setLineup("Основний");
-        sportsman1.setPosition("Нет");
-        sportsman1.setSport("Бокс");
-        sportsman1.setRank("МС");
+        sportsman1.setSport(football);
+        sportsman1.setLineup(1);
+        sportsman1.setPosition(2);
+        sportsman1.setRank(3);
         sportsman1.setTitleNumber(2);
 
 
@@ -51,10 +70,10 @@ public class SportsmanInfo {
         sportsman2.setFirstName("Алексей");
         sportsman2.setSecondName("Шульга");
         sportsman2.setThirdName("Юрьевич");
-        sportsman2.setLineup("Основний");
-        sportsman2.setPosition("ФРВ");
-        sportsman2.setSport("Футбол");
-        sportsman2.setRank("КМС");
+        sportsman2.setSport(football);
+        sportsman2.setLineup(1);
+        sportsman2.setPosition(2);
+        sportsman2.setRank(2);
         sportsman2.setTitleNumber(5);
 
 
@@ -62,43 +81,78 @@ public class SportsmanInfo {
         sportsman3.setFirstName("Jesse");
         sportsman3.setSecondName("Elis");
         sportsman3.setThirdName("Lingard");
-        sportsman3.setLineup("Основний");
-        sportsman3.setPosition("ЦАП");
-        sportsman3.setSport("Футбол");
-        sportsman3.setRank("МС");
+        sportsman3.setSport(football);
+        sportsman3.setLineup(0);
+        sportsman3.setPosition(1);
+        sportsman3.setRank(3);
         sportsman3.setTitleNumber(10);
 
-        sportsmanList.add(sportsman);
+
+        sportsmanInfoData.addSportsman(sportsman);
+        sportsmanInfoData.addSportsman(sportsman1);
+        sportsmanInfoData.addSportsman(sportsman2);
+        sportsmanInfoData.addSportsman(sportsman3);
+
+
+/*        sportsmanList.add(sportsman);
         sportsmanList.add(sportsman1);
         sportsmanList.add(sportsman2);
-        sportsmanList.add(sportsman3);
+        sportsmanList.add(sportsman3);*/
 
 
-        JScrollPane scrollPane = new JScrollPane(new SportsmanTable(sportsmanList));
-        scrollPane.setVisible(true);
+       // tablePanel = new JScrollPane(new JTable(new TableModelWithSportsman(sportsmanList)));
 
-
-
-
-        mainFrame.add(scrollPane, BorderLayout.CENTER);
+        mainFrame = new MainFrame(this);
         mainFrame.setVisible(true);
+
+        //mainFrame.revalidate();
+
+
     }
 
+
+/*
     public void exit(JFrame frame) {
 
     }
+*/
+    public void deleteFIOSport(String name, String secondName, String thirdname, Sport sport){
+        sportsmanInfoData.deleteSportsman(name, secondName, thirdname, sport);
+        refreshMainFrame();
+    }
 
+    public void deleteTitle(int lower, int upper){
+        sportsmanInfoData.deleteSportsman(lower, upper);
+        refreshMainFrame();
+    }
+
+
+    public void addSport(String name, String[] positions){
+        sportsmanInfoData.addSport(new Sport(name, positions));
+        //mainFrame.revalidate();
+    }
     public void addSportsman(Sportsman sportsman) {
-        tableModelWithSportsman = mainFrame.getTableModelWithSportsman();
-       // tableModelWithSportsman.addSportsman(sportsman);
+        sportsmanInfoData.addSportsman(sportsman);
+        refreshMainFrame();
+    }
+
+/*
+    public void refreshTableMainPage(JScrollPane panel){
+        panel = new JScrollPane(new JTable(new TableModelWithSportsman(sportsmanList)));
+        mainFrame.revalidate();
+    }
+
+    public void openDialogAddingSportsman() {
+        AddSportsmanDialog addDialog = new AddSportsmanDialog(this, sportList);
+    }
+
+*/
+
+    public void refreshMainFrame(){
         mainFrame.refreshTable();
-
     }
 
-
-      public void openDialogAddingSportsman() {
-        AddSportsmanDialog addDialog = new AddSportsmanDialog(this);
+    public SportsmanInfoData getSportsmanInfoData() {
+        return sportsmanInfoData;
     }
-
-
 }

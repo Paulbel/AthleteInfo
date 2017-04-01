@@ -1,22 +1,23 @@
 package Model;
 
-import java.util.GregorianCalendar;
-
 /**
  * Created by Sinelnikov on 25.03.2017.
  */
-public class SportsmanModel {
+public class Sportsman {
     private String firstName;
     private String secondName;
     private String thirdName;
     private int titleNumber;
     private String position;
-    private String sport;
     private String rank;
     private String lineup;
+    private Sport sport;
+    public Sportsman() {
 
-    public SportsmanModel() {
+    }
 
+    public void setSport(Sport sport){
+        this.sport = sport;
     }
 
     public void setFirstName(String firstName) {
@@ -31,22 +32,25 @@ public class SportsmanModel {
         this.thirdName = thirdName;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setLineup(int number){
+        lineup = sport.getLineup(number);
     }
 
-    public void setSport(String sport){
-        this.sport = sport;
+    public void setPosition(int indexInPositionArrayNumber)
+    {
+        position = sport.getPositions()[indexInPositionArrayNumber];
     }
 
-    public void setRank(String rank) {
-        this.rank = rank;
+    public void setTitleNumber(int titleNumber) {
+        this.titleNumber = titleNumber;
+    }
+
+    public void setRank(int number) {
+        rank = sport.getRanks()[number];
     }
 
 
-    public void setLineup(String lineup){
-        this.lineup = lineup;
-    }
+
 
     public int getTitleNumber() {
         return titleNumber;
@@ -72,7 +76,11 @@ public class SportsmanModel {
         return secondName;
     }
 
-    public String getSport() {
+    public String getSportName() {
+        return sport.getName();
+    }
+
+    public Sport getSport() {
         return sport;
     }
 
@@ -80,7 +88,5 @@ public class SportsmanModel {
         return thirdName;
     }
 
-    public void setTitleNumber(int titleNumber) {
-        this.titleNumber = titleNumber;
-    }
+
 }
