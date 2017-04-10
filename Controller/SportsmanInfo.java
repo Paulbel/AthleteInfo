@@ -15,14 +15,15 @@ import java.util.List;
  */
 public class SportsmanInfo {
     private MainFrame mainFrame;
-    //private List<Sportsman> sportsmanList;
-   // private SportList sportList;
-   // private PageWalker walker;
-    //private JScrollPane tablePanel;
     SportsmanInfoData sportsmanInfoData;
 
     public void run() {
         sportsmanInfoData = new SportsmanInfoData();
+        mainFrame = new MainFrame(this);
+
+
+
+
         Sport football = new Sport("Футбол", new String[]{"ВРТ", "ЦЗ", "ПЗ", "ЛЗ", "ЦП", "ЛП", "ПП", "ЦАП", "ФРВ"});
         sportsmanInfoData.addSport(football);
         sportsmanInfoData.addSport(new Sport("Хыккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
@@ -30,20 +31,6 @@ public class SportsmanInfo {
         sportsmanInfoData.addSport(new Sport("Хоккуй", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
         sportsmanInfoData.addSport(new Sport("Хаккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
 
-
-
-
-
-/*        sportsmanList = new ArrayList<>();
-        sportList = new SportList();
-        walker = new PageWalker(sportsmanList);
-        sportList.addSportType("Футбол", new String[]{"ВРТ", "ЦЗ", "ПЗ", "ЛЗ", "ЦП", "ЛП", "ПП", "ЦАП", "ФРВ"});
-        sportList.addSportType("Хоккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"});
-        sportList.addSportType("Плавание", new String[]{"Нет"});
-        mainFrame = new MainFrame(this);*/
-
-
-       // SportsmanTable sportsmanTable = new SportsmanTable(sportsmanList);
 
         Sportsman sportsman = new Sportsman();
         sportsman.setFirstName("Павел");
@@ -103,8 +90,8 @@ public class SportsmanInfo {
 
        // tablePanel = new JScrollPane(new JTable(new TableModelWithSportsman(sportsmanList)));
 
-        mainFrame = new MainFrame(this);
-        mainFrame.setVisible(true);
+
+        mainFrame.getMainFrame().setVisible(true);
 
         //mainFrame.revalidate();
 
@@ -121,9 +108,8 @@ public class SportsmanInfo {
         int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
         sportsmanInfoData.deleteSportsman(name, secondName, thirdname, sport);
         int numberAfterDeletion = sportsmanInfoData.getSportsmanList().size();
-        JOptionPane.showMessageDialog(mainFrame, "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
+        JOptionPane.showMessageDialog(mainFrame.getMainFrame(), "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
         refreshMainFrame();
-
     }
 
     public void deleteTitle(int lower, int upper){
@@ -166,7 +152,7 @@ public class SportsmanInfo {
         int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
         sportsmanInfoData.deleteSportsman(name, secondName, thirdName, rank);
         int numberAfterDeletion = sportsmanInfoData.getSportsmanList().size();
-        JOptionPane.showMessageDialog(mainFrame, "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
+        JOptionPane.showMessageDialog(mainFrame.getMainFrame(), "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
         refreshMainFrame();
     }
 
@@ -174,4 +160,13 @@ public class SportsmanInfo {
     public List<Sportsman> searchSportsmanFIOSport(String name, String secondName, String thirdName, Sport sport){
         return sportsmanInfoData.searhSportsmanByFIOSportName(name, secondName, thirdName, sport);
     }
+
+    public List<Sportsman> searchSportsmanTitles(int lower, int upper){
+        return sportsmanInfoData.searchSportsmanByTitles(lower, upper);
+    }
+    public List<Sportsman> searchSportsmanFIORank(String name, String secondName, String thirdName, String rank){
+        return sportsmanInfoData.searhSportsmanByFIORank(name, secondName, thirdName, rank);
+    }
+
+
 }
