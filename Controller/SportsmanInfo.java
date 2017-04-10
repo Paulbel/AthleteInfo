@@ -20,6 +20,7 @@ public class SportsmanInfo {
    // private PageWalker walker;
     //private JScrollPane tablePanel;
     SportsmanInfoData sportsmanInfoData;
+
     public void run() {
         sportsmanInfoData = new SportsmanInfoData();
         Sport football = new Sport("Футбол", new String[]{"ВРТ", "ЦЗ", "ПЗ", "ЛЗ", "ЦП", "ЛП", "ПП", "ЦАП", "ФРВ"});
@@ -117,8 +118,12 @@ public class SportsmanInfo {
     }
 */
     public void deleteFIOSport(String name, String secondName, String thirdname, Sport sport){
+        int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
         sportsmanInfoData.deleteSportsman(name, secondName, thirdname, sport);
+        int numberAfterDeletion = sportsmanInfoData.getSportsmanList().size();
+        JOptionPane.showMessageDialog(mainFrame, "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
         refreshMainFrame();
+
     }
 
     public void deleteTitle(int lower, int upper){
@@ -154,5 +159,19 @@ public class SportsmanInfo {
 
     public SportsmanInfoData getSportsmanInfoData() {
         return sportsmanInfoData;
+    }
+
+
+    public void deleteFIORank(String name, String secondName, String thirdName, String rank){
+        int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
+        sportsmanInfoData.deleteSportsman(name, secondName, thirdName, rank);
+        int numberAfterDeletion = sportsmanInfoData.getSportsmanList().size();
+        JOptionPane.showMessageDialog(mainFrame, "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
+        refreshMainFrame();
+    }
+
+
+    public List<Sportsman> searchSportsmanFIOSport(String name, String secondName, String thirdName, Sport sport){
+        return sportsmanInfoData.searhSportsmanByFIOSportName(name, secondName, thirdName, sport);
     }
 }

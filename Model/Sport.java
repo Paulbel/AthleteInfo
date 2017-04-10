@@ -28,4 +28,8 @@ public class Sport {
     public String[] getRanks() {
         return rank;
     }
+
+    public String getRankByIndex(int index){
+        return rank[index];
+    }
 }

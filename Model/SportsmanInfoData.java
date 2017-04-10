@@ -50,6 +50,21 @@ public class  SportsmanInfoData {
         return foundSportsmanList;
     }
 
+    public List<Sportsman> searhSportsmanByFIORank(String firstname, String secondname, String thirdname, String rank){
+        Sportsman sportsman;
+        List<Sportsman> foundSportsmanList = new ArrayList<>();
+        for (int index = 0; index < sportsmanList.size(); index++){
+            sportsman = sportsmanList.get(index);
+            if(sportsman.getRank().equals(rank)
+                    &&sportsman.getFirstName().equals(firstname)
+                    &&sportsman.getThirdName().equals(thirdname)){
+                foundSportsmanList.add(sportsman);
+            }
+        }
+        return foundSportsmanList;
+    }
+
+
 
     public void deleteSportsman(String firstname, String secondname, String thirdname, Sport sport){
         List<Sportsman> toDeleteList= searhSportsmanByFIOSportName(firstname,secondname,thirdname,sport);
@@ -58,6 +73,15 @@ public class  SportsmanInfoData {
         }
 
     }
+
+    public void deleteSportsman(String firstname, String secondname, String thirdname, String rank){
+        List<Sportsman> toDeleteList= searhSportsmanByFIORank(firstname,secondname,thirdname,rank);
+        for (int index = 0; index < toDeleteList.size(); index++){
+            sportsmanList.remove(toDeleteList.get(index));
+        }
+
+    }
+
 
     public List<Sportsman> searchSportsmanByTitles(int from, int to){
         List<Sportsman> foundSportsmanList = new ArrayList<>();
