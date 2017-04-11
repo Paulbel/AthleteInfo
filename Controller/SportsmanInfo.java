@@ -19,7 +19,7 @@ public class SportsmanInfo {
 
     public void run() {
         sportsmanInfoData = new SportsmanInfoData();
-        mainFrame = new MainFrame(this);
+
 
 
 
@@ -30,6 +30,8 @@ public class SportsmanInfo {
         sportsmanInfoData.addSport(new Sport("Хиккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
         sportsmanInfoData.addSport(new Sport("Хоккуй", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
         sportsmanInfoData.addSport(new Sport("Хаккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
+
+
 
 
         Sportsman sportsman = new Sportsman();
@@ -80,8 +82,15 @@ public class SportsmanInfo {
         sportsmanInfoData.addSportsman(sportsman1);
         sportsmanInfoData.addSportsman(sportsman2);
         sportsmanInfoData.addSportsman(sportsman3);
-
-
+        sportsmanInfoData.addSportsman(sportsman);
+        sportsmanInfoData.addSportsman(sportsman1);
+        sportsmanInfoData.addSportsman(sportsman2);
+        sportsmanInfoData.addSportsman(sportsman3);
+        sportsmanInfoData.addSportsman(sportsman);
+        sportsmanInfoData.addSportsman(sportsman1);
+        sportsmanInfoData.addSportsman(sportsman2);
+        sportsmanInfoData.addSportsman(sportsman3);
+        mainFrame = new MainFrame(this);
 /*        sportsmanList.add(sportsman);
         sportsmanList.add(sportsman1);
         sportsmanList.add(sportsman2);
