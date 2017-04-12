@@ -31,9 +31,6 @@ public class SportsmanInfo {
         sportsmanInfoData.addSport(new Sport("Хоккуй", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
         sportsmanInfoData.addSport(new Sport("Хаккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
 
-
-
-
         Sportsman sportsman = new Sportsman();
         sportsman.setFirstName("Павел");
         sportsman.setSecondName("Синельников");
@@ -43,7 +40,6 @@ public class SportsmanInfo {
         sportsman.setPosition(1);
         sportsman.setRank(2);
         sportsman.setTitleNumber(2);
-
 
         Sportsman sportsman1 = new Sportsman();
         sportsman1.setFirstName("Максим");
@@ -55,7 +51,6 @@ public class SportsmanInfo {
         sportsman1.setRank(3);
         sportsman1.setTitleNumber(2);
 
-
         Sportsman sportsman2 = new Sportsman();
         sportsman2.setFirstName("Алексей");
         sportsman2.setSecondName("Шульга");
@@ -66,7 +61,6 @@ public class SportsmanInfo {
         sportsman2.setRank(2);
         sportsman2.setTitleNumber(5);
 
-
         Sportsman sportsman3 = new Sportsman();
         sportsman3.setFirstName("Jesse");
         sportsman3.setSecondName("Elis");
@@ -76,7 +70,6 @@ public class SportsmanInfo {
         sportsman3.setPosition(1);
         sportsman3.setRank(3);
         sportsman3.setTitleNumber(10);
-
 
         sportsmanInfoData.addSportsman(sportsman);
         sportsmanInfoData.addSportsman(sportsman1);
@@ -91,28 +84,19 @@ public class SportsmanInfo {
         sportsmanInfoData.addSportsman(sportsman2);
         sportsmanInfoData.addSportsman(sportsman3);
         mainFrame = new MainFrame(this);
-/*        sportsmanList.add(sportsman);
-        sportsmanList.add(sportsman1);
-        sportsmanList.add(sportsman2);
-        sportsmanList.add(sportsman3);*/
 
 
-       // tablePanel = new JScrollPane(new JTable(new TableModelWithSportsman(sportsmanList)));
+
 
 
         mainFrame.getMainFrame().setVisible(true);
 
-        //mainFrame.revalidate();
 
 
     }
 
 
-/*
-    public void exit(JFrame frame) {
 
-    }
-*/
     public void deleteFIOSport(String name, String secondName, String thirdname, Sport sport){
         int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
         sportsmanInfoData.deleteSportsman(name, secondName, thirdname, sport);
@@ -177,5 +161,9 @@ public class SportsmanInfo {
         return sportsmanInfoData.searhSportsmanByFIORank(name, secondName, thirdName, rank);
     }
 
+    public void changeData(List<Sportsman> list){
+        sportsmanInfoData.changeDataList(list);
+        refreshMainFrame();
+    }
 
 }

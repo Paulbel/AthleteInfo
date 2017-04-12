@@ -36,9 +36,18 @@ public class Sportsman {
         lineup = sport.getLineup(number);
     }
 
+    public void setLineup(String lineup){
+        this.lineup = lineup;
+    }
+
     public void setPosition(int indexInPositionArrayNumber)
     {
         position = sport.getPositions()[indexInPositionArrayNumber];
+    }
+
+    public void setPosition(String position)
+    {
+        this.position = position;
     }
 
     public void setTitleNumber(int titleNumber) {
@@ -49,7 +58,10 @@ public class Sportsman {
         rank = sport.getRanks()[number];
     }
 
-
+    public void setRank(String rank)
+    {
+        this.rank = rank;
+    }
 
 
     public int getTitleNumber() {

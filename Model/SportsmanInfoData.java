@@ -13,13 +13,24 @@ public class  SportsmanInfoData {
         sportList = new ArrayList<>();
         sportsmanList = new ArrayList<>();
     }
-
+    public void changeDataList(List<Sportsman> sportsmanList){
+        this.sportsmanList = sportsmanList;
+    }
 
     public void addSportsman(Sportsman sportsman){
         sportsmanList.add(sportsman);
         sportsmanList.sort(new SportsmanComporatorBySecondName());
     }
 
+
+    public Sport findSportInList(String name){
+        for (int index = 0; index < sportList.size(); index++){
+            if (sportList.get(index).getName().equals(name)){
+                return sportList.get(index);
+            }
+        }
+        return null;
+    }
 
     public void addSport(Sport sport){
         sportList.add(sport);
