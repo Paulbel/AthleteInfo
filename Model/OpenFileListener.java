@@ -9,8 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by Лёша on 23.03.2017.
+ * Created by Sinelnikov on 12.04.2017.
  */
+
 public class OpenFileListener implements ActionListener {
     private SportsmanInfo controller;
     private JFileChooser fileChooser;
@@ -22,6 +23,7 @@ public class OpenFileListener implements ActionListener {
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "XML Формат", "xml");
         fileChooser.setFileFilter(filter);
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setDialogTitle("Загрузить файл");
     }
     public void actionPerformed(ActionEvent e) {

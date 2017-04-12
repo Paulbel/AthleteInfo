@@ -21,9 +21,6 @@ public class SportsmanInfo {
         sportsmanInfoData = new SportsmanInfoData();
 
 
-
-
-
         Sport football = new Sport("Футбол", new String[]{"ВРТ", "ЦЗ", "ПЗ", "ЛЗ", "ЦП", "ЛП", "ПП", "ЦАП", "ФРВ"});
         sportsmanInfoData.addSport(football);
         sportsmanInfoData.addSport(new Sport("Хыккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
@@ -98,10 +95,10 @@ public class SportsmanInfo {
 
 
     public void deleteFIOSport(String name, String secondName, String thirdname, Sport sport){
-        int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
+       // int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
         sportsmanInfoData.deleteSportsman(name, secondName, thirdname, sport);
-        int numberAfterDeletion = sportsmanInfoData.getSportsmanList().size();
-        JOptionPane.showMessageDialog(mainFrame.getMainFrame(), "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
+       // int numberAfterDeletion = sportsmanInfoData.getSportsmanList().size();
+       // JOptionPane.showMessageDialog(mainFrame.getMainFrame(), "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
         refreshMainFrame();
     }
 
@@ -120,18 +117,6 @@ public class SportsmanInfo {
         refreshMainFrame();
     }
 
-/*
-    public void refreshTableMainPage(JScrollPane panel){
-        panel = new JScrollPane(new JTable(new TableModelWithSportsman(sportsmanList)));
-        mainFrame.revalidate();
-    }
-
-    public void openDialogAddingSportsman() {
-        AddSportsmanDialog addDialog = new AddSportsmanDialog(this, sportList);
-    }
-
-*/
-
     public void refreshMainFrame(){
         mainFrame.refreshTable();
     }
@@ -142,10 +127,10 @@ public class SportsmanInfo {
 
 
     public void deleteFIORank(String name, String secondName, String thirdName, String rank){
-        int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
+      //  int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
         sportsmanInfoData.deleteSportsman(name, secondName, thirdName, rank);
-        int numberAfterDeletion = sportsmanInfoData.getSportsmanList().size();
-        JOptionPane.showMessageDialog(mainFrame.getMainFrame(), "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
+       // int numberAfterDeletion = sportsmanInfoData.getSportsmanList().size();
+       // JOptionPane.showMessageDialog(mainFrame.getMainFrame(), "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
         refreshMainFrame();
     }
 

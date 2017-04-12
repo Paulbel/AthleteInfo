@@ -31,8 +31,8 @@ public class XMLFile {
         sportsmanList = controller.getSportsmanInfoData().getSportsmanList();
     }
     public void writeFile() throws IOException, TransformerException, ParserConfigurationException {
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = dbf.newDocumentBuilder();
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
         Document document = builder.newDocument();
 
         Element rootElement = document.createElement(XMLConst.SPORTSMEN);

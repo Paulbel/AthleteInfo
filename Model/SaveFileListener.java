@@ -10,6 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * Created by Sinelnikov on 12.04.2017.
+ */
 
 public class SaveFileListener implements ActionListener {
     private JFileChooser fileChooser;
