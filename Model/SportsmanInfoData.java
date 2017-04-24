@@ -6,35 +6,37 @@ import java.util.List;
 /**
  * Created by Sinelnikov on 31.03.2017.
  */
-public class  SportsmanInfoData {
+public class SportsmanInfoData {
     private List<Sport> sportList;
     private List<Sportsman> sportsmanList;
-    public SportsmanInfoData(){
+
+    public SportsmanInfoData() {
         sportList = new ArrayList<>();
         sportsmanList = new ArrayList<>();
     }
-    public void changeDataList(List<Sportsman> sportsmanList){
+
+    public void changeDataList(List<Sportsman> sportsmanList) {
         this.sportsmanList = sportsmanList;
     }
 
-    public void addSportsman(Sportsman sportsman){
+    public void addSportsman(Sportsman sportsman) {
         sportsmanList.add(sportsman);
         sportsmanList.sort(new SportsmanComporatorBySecondName());
     }
 
 
-    public Sport findSportInList(String name){
-        for (int index = 0; index < sportList.size(); index++){
-            if (sportList.get(index).getName().equals(name)){
+    public Sport findSportInList(String name) {
+        for (int index = 0; index < sportList.size(); index++) {
+            if (sportList.get(index).getName().equals(name)) {
                 return sportList.get(index);
             }
         }
         return null;
     }
 
-    public void addSport(Sport sport){
+    public void addSport(Sport sport) {
         sportList.add(sport);
-      //  sportList.sort(new SportComporatorByName());
+        //  sportList.sort(new SportComporatorByName());
     }
 
 
@@ -46,58 +48,54 @@ public class  SportsmanInfoData {
         return sportsmanList;
     }
 
-    public List<Sportsman> searhSportsmanByFIOSportName(String firstname, String secondname, String thirdname, Sport sport){
+    public List<Sportsman> searhSportsmanByFIOSportName(String firstname, String secondname, String thirdname, Sport sport) {
+        List<Sportsman> foundSportsmanList = new ArrayList<>();
+        for (Sportsman sportsman : sportsmanList)
+            if (sportsman.getSport().equals(sport)
+                    && sportsman.getFirstName().equals(firstname)
+                    && sportsman.getThirdName().equals(thirdname)) {
+                foundSportsmanList.add(sportsman);
+            }
+        return foundSportsmanList;
+    }
+
+    public List<Sportsman> searhSportsmanByFIORank(String firstname, String secondname, String thirdname, String rank) {
         Sportsman sportsman;
         List<Sportsman> foundSportsmanList = new ArrayList<>();
-        for (int index = 0; index < sportsmanList.size(); index++){
+        for (int index = 0; index < sportsmanList.size(); index++) {
             sportsman = sportsmanList.get(index);
-            if(sportsman.getSport().equals(sport)
-                    &&sportsman.getFirstName().equals(firstname)
-                    &&sportsman.getThirdName().equals(thirdname)){
+            if (sportsman.getRank().equals(rank)
+                    && sportsman.getFirstName().equals(firstname)
+                    && sportsman.getThirdName().equals(thirdname)) {
                 foundSportsmanList.add(sportsman);
             }
         }
         return foundSportsmanList;
     }
 
-    public List<Sportsman> searhSportsmanByFIORank(String firstname, String secondname, String thirdname, String rank){
-        Sportsman sportsman;
-        List<Sportsman> foundSportsmanList = new ArrayList<>();
-        for (int index = 0; index < sportsmanList.size(); index++){
-            sportsman = sportsmanList.get(index);
-            if(sportsman.getRank().equals(rank)
-                    &&sportsman.getFirstName().equals(firstname)
-                    &&sportsman.getThirdName().equals(thirdname)){
-                foundSportsmanList.add(sportsman);
-            }
-        }
-        return foundSportsmanList;
-    }
 
-
-
-    public void deleteSportsman(String firstname, String secondname, String thirdname, Sport sport){
-        List<Sportsman> toDeleteList= searhSportsmanByFIOSportName(firstname,secondname,thirdname,sport);
-        for (int index = 0; index < toDeleteList.size(); index++){
+    public void deleteSportsman(String firstname, String secondname, String thirdname, Sport sport) {
+        List<Sportsman> toDeleteList = searhSportsmanByFIOSportName(firstname, secondname, thirdname, sport);
+        for (int index = 0; index < toDeleteList.size(); index++) {
             sportsmanList.remove(toDeleteList.get(index));
         }
 
     }
 
-    public void deleteSportsman(String firstname, String secondname, String thirdname, String rank){
-        List<Sportsman> toDeleteList= searhSportsmanByFIORank(firstname,secondname,thirdname,rank);
-        for (int index = 0; index < toDeleteList.size(); index++){
+    public void deleteSportsman(String firstname, String secondname, String thirdname, String rank) {
+        List<Sportsman> toDeleteList = searhSportsmanByFIORank(firstname, secondname, thirdname, rank);
+        for (int index = 0; index < toDeleteList.size(); index++) {
             sportsmanList.remove(toDeleteList.get(index));
         }
 
     }
 
 
-    public List<Sportsman> searchSportsmanByTitles(int from, int to){
+    public List<Sportsman> searchSportsmanByTitles(int from, int to) {
         List<Sportsman> foundSportsmanList = new ArrayList<>();
 
-        for (int index = 0; index < sportsmanList.size(); index++){
-            if(from<=sportsmanList.get(index).getTitleNumber()&&sportsmanList.get(index).getTitleNumber()<=to){
+        for (int index = 0; index < sportsmanList.size(); index++) {
+            if (from <= sportsmanList.get(index).getTitleNumber() && sportsmanList.get(index).getTitleNumber() <= to) {
                 foundSportsmanList.add(sportsmanList.get(index));
             }
 
@@ -106,18 +104,18 @@ public class  SportsmanInfoData {
     }
 
 
-    public void deleteSportsman(int from, int to){
+    public void deleteSportsman(int from, int to) {
         List<Sportsman> toDeleteList = searchSportsmanByTitles(from, to);
-        for (int index = 0; index < toDeleteList.size(); index++){
+        for (int index = 0; index < toDeleteList.size(); index++) {
             sportsmanList.remove(toDeleteList.get(index));
         }
     }
 
 
-    public String [] getSportNames(){
-        List<String> namesList= new ArrayList<>();
-        String [] namesArray = new String[sportList.size()];
-        for(int number = 0; number < sportList.size(); number++){
+    public String[] getSportNames() {
+        List<String> namesList = new ArrayList<>();
+        String[] namesArray = new String[sportList.size()];
+        for (int number = 0; number < sportList.size(); number++) {
             namesArray[number] = sportList.get(number).getName();
         }
         return namesArray;

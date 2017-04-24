@@ -1,7 +1,6 @@
 package Model;
 
 import Controller.SportsmanInfo;
-import View.MainFrame;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -16,7 +15,7 @@ public class OpenFileListener implements ActionListener {
     private SportsmanInfo controller;
     private JFileChooser fileChooser;
 
-    public OpenFileListener(SportsmanInfo controller){
+    public OpenFileListener(SportsmanInfo controller) {
         this.controller = controller;
         fileChooser = new JFileChooser();
         fileChooser.setMultiSelectionEnabled(false);
@@ -26,9 +25,10 @@ public class OpenFileListener implements ActionListener {
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setDialogTitle("Загрузить файл");
     }
+
     public void actionPerformed(ActionEvent e) {
         if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-                new XMLFile(fileChooser.getSelectedFile().getPath(), controller).readFile();
+            new XMLFile(fileChooser.getSelectedFile().getPath(), controller).readFile();
         }
     }
 }

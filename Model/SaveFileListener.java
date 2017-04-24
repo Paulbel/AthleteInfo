@@ -18,19 +18,20 @@ public class SaveFileListener implements ActionListener {
     private JFileChooser fileChooser;
     private SportsmanInfo controller;
 
-    public SaveFileListener(SportsmanInfo controller){
+    public SaveFileListener(SportsmanInfo controller) {
         fileChooser = new JFileChooser();
-        this.controller = controller;        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+        this.controller = controller;
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "XML Формат", "xml");
         fileChooser.setFileFilter(filter);
         fileChooser.setDialogTitle("Сохранить файл");
     }
 
     public void actionPerformed(ActionEvent e) {
-        if(fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION){
+        if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
             try {
-                new XMLFile(fileChooser.getSelectedFile().getPath(), controller ).writeFile();
-            }catch (IOException exception) {
+                new XMLFile(fileChooser.getSelectedFile().getPath(), controller).writeFile();
+            } catch (IOException exception) {
                 exception.printStackTrace();
             } catch (TransformerException exception) {
                 exception.printStackTrace();

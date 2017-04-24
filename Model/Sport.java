@@ -3,6 +3,7 @@ package Model;
 /**
  * Created by Sinelnikov on 27.03.2017.
  */
+//java.util
 public class Sport {
     private String name;
     private String[] positions;
@@ -13,7 +14,8 @@ public class Sport {
         this.name = name;
         this.positions = position;
     }
-    public String getLineup(int number){
+
+    public String getLineup(int number) {
         return lineup[number];
     }
 
@@ -29,7 +31,7 @@ public class Sport {
         return rank;
     }
 
-    public String getRankByIndex(int index){
+    public String getRankByIndex(int index) {
         return rank[index];
     }
 }

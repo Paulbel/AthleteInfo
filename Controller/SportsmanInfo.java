@@ -3,11 +3,8 @@ package Controller;
 import Model.Sport;
 import Model.Sportsman;
 import Model.SportsmanInfoData;
-import View.*;
+import View.MainFrame;
 
-import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +16,6 @@ public class SportsmanInfo {
 
     public void run() {
         sportsmanInfoData = new SportsmanInfoData();
-
 
         Sport football = new Sport("Футбол", new String[]{"ВРТ", "ЦЗ", "ПЗ", "ЛЗ", "ЦП", "ЛП", "ПП", "ЦАП", "ФРВ"});
         sportsmanInfoData.addSport(football);
@@ -82,42 +78,34 @@ public class SportsmanInfo {
         sportsmanInfoData.addSportsman(sportsman3);
         mainFrame = new MainFrame(this);
 
-
-
-
-
         mainFrame.getMainFrame().setVisible(true);
-
-
-
     }
 
 
-
-    public void deleteFIOSport(String name, String secondName, String thirdname, Sport sport){
-       // int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
+    public void deleteFIOSport(String name, String secondName, String thirdname, Sport sport) {
+        //  int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
         sportsmanInfoData.deleteSportsman(name, secondName, thirdname, sport);
-       // int numberAfterDeletion = sportsmanInfoData.getSportsmanList().size();
-       // JOptionPane.showMessageDialog(mainFrame.getMainFrame(), "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
+        // int numberAfterDeletion = sportsmanInfoData.getSportsmanList().size();
+        // JOptionPane.showMessageDialog(mainFrame.getMainFrame(), "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
         refreshMainFrame();
     }
 
-    public void deleteTitle(int lower, int upper){
+    public void deleteTitle(int lower, int upper) {
         sportsmanInfoData.deleteSportsman(lower, upper);
         refreshMainFrame();
     }
 
 
-    public void addSport(String name, String[] positions){
+    public void addSport(String name, String[] positions) {
         sportsmanInfoData.addSport(new Sport(name, positions));
-        //mainFrame.revalidate();
     }
+
     public void addSportsman(Sportsman sportsman) {
         sportsmanInfoData.addSportsman(sportsman);
         refreshMainFrame();
     }
 
-    public void refreshMainFrame(){
+    public void refreshMainFrame() {
         mainFrame.refreshTable();
     }
 
@@ -126,27 +114,28 @@ public class SportsmanInfo {
     }
 
 
-    public void deleteFIORank(String name, String secondName, String thirdName, String rank){
-      //  int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
+    public void deleteFIORank(String name, String secondName, String thirdName, String rank) {
+        //  int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
         sportsmanInfoData.deleteSportsman(name, secondName, thirdName, rank);
-       // int numberAfterDeletion = sportsmanInfoData.getSportsmanList().size();
-       // JOptionPane.showMessageDialog(mainFrame.getMainFrame(), "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
+        // int numberAfterDeletion = sportsmanInfoData.getSportsmanList().size();
+        // JOptionPane.showMessageDialog(mainFrame.getMainFrame(), "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
         refreshMainFrame();
     }
 
 
-    public List<Sportsman> searchSportsmanFIOSport(String name, String secondName, String thirdName, Sport sport){
+    public List<Sportsman> searchSportsmanFIOSport(String name, String secondName, String thirdName, Sport sport) {
         return sportsmanInfoData.searhSportsmanByFIOSportName(name, secondName, thirdName, sport);
     }
 
-    public List<Sportsman> searchSportsmanTitles(int lower, int upper){
+    public List<Sportsman> searchSportsmanTitles(int lower, int upper) {
         return sportsmanInfoData.searchSportsmanByTitles(lower, upper);
     }
-    public List<Sportsman> searchSportsmanFIORank(String name, String secondName, String thirdName, String rank){
+
+    public List<Sportsman> searchSportsmanFIORank(String name, String secondName, String thirdName, String rank) {
         return sportsmanInfoData.searhSportsmanByFIORank(name, secondName, thirdName, rank);
     }
 
-    public void changeData(List<Sportsman> list){
+    public void changeData(List<Sportsman> list) {
         sportsmanInfoData.changeDataList(list);
         refreshMainFrame();
     }
