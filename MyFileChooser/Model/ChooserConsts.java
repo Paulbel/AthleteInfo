@@ -20,6 +20,6 @@ public final class ChooserConsts {
     public static final String NAME_TREE_ROOT = "My Computer";
     public static final int APPROVEOPTION = 2;
     public static final int CANCELOPTION = 3;
-
+    public static final int DONOTHINGOPTION = 0;
 
 }

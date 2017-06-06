@@ -41,6 +41,7 @@ public class OpenFileListener implements ActionListener {
         if(myFileChooser.getOption() == ChooserConsts.APPROVEOPTION){
             System.out.println("APPROVE");
             new XMLFile(myFileChooser.getSelectedFile().getPath(), controller).readFile();
+            myFileChooser.setOption(ChooserConsts.DONOTHINGOPTION);
         }
     }
 
