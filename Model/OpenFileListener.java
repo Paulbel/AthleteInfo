@@ -1,6 +1,9 @@
 package Model;
 
 import Controller.SportsmanInfo;
+import MyFileChooser.Controller.MyFileChooser;
+import MyFileChooser.Model.ChooserConsts;
+import javafx.stage.FileChooser;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -13,22 +16,32 @@ import java.awt.event.ActionListener;
 
 public class OpenFileListener implements ActionListener {
     private SportsmanInfo controller;
-    private JFileChooser fileChooser;
-
+    //private JFileChooser fileChooser;
+    private MyFileChooser myFileChooser;
     public OpenFileListener(SportsmanInfo controller) {
         this.controller = controller;
-        fileChooser = new JFileChooser();
+        /*fileChooser = new JFileChooser();
         fileChooser.setMultiSelectionEnabled(false);
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "XML Формат", "xml");
         fileChooser.setFileFilter(filter);
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fileChooser.setDialogTitle("Загрузить файл");
+        fileChooser.setDialogTitle("Загрузить файл");*/
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            new XMLFile(fileChooser.getSelectedFile().getPath(), controller).readFile();
+            myFileChooser = new MyFileChooser();
+            myFileChooser.setListener(this);
+            myFileChooser.showDialog();
+            System.out.println(myFileChooser.getOption());
+
+    }
+
+    public void openFile(){
+        if(myFileChooser.getOption() == ChooserConsts.APPROVEOPTION){
+            System.out.println("APPROVE");
+            new XMLFile(myFileChooser.getSelectedFile().getPath(), controller).readFile();
         }
     }
+
 }

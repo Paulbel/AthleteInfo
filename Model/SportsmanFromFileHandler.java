@@ -39,7 +39,6 @@ public class SportsmanFromFileHandler extends DefaultHandler {
             if (controller.getSportsmanInfoData().findSportInList(sportName) == null) {
                 String positions[] = new String[1];
                 positions[0] = position;
-                System.out.println(sportName);
                 Sport sport = new Sport(sportName, positions);
                 controller.addSport(sportName, positions);
                 sportsman.setSport(sport);
