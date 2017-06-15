@@ -1,12 +1,8 @@
 package Model;
 
+import Controller.MyFileChooser;
 import Controller.SportsmanInfo;
-import MyFileChooser.Controller.MyFileChooser;
-import MyFileChooser.Model.ChooserConsts;
-import javafx.stage.FileChooser;
 
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,33 +12,27 @@ import java.awt.event.ActionListener;
 
 public class OpenFileListener implements ActionListener {
     private SportsmanInfo controller;
-    //private JFileChooser fileChooser;
     private MyFileChooser myFileChooser;
-    public OpenFileListener(SportsmanInfo controller) {
+
+    public OpenFileListener(SportsmanInfo controller, MyFileChooser fileChooser) {
         this.controller = controller;
-        /*fileChooser = new JFileChooser();
-        fileChooser.setMultiSelectionEnabled(false);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "XML Формат", "xml");
-        fileChooser.setFileFilter(filter);
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fileChooser.setDialogTitle("Загрузить файл");*/
+        this.myFileChooser = fileChooser;
     }
 
     public void actionPerformed(ActionEvent e) {
-            myFileChooser = new MyFileChooser();
-            myFileChooser.setListener(this);
-            myFileChooser.showDialog();
-            System.out.println(myFileChooser.getOption());
 
-    }
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (myFileChooser.showDialog() == ChooserConsts.OKOPTION) {
+                    new XMLFile(myFileChooser.getSelectedFile().getPath(), controller).readFile();
+                    myFileChooser.setOption(ChooserConsts.WAITOPTION);
+                }
+            }
+        });
+        t1.start();
 
-    public void openFile(){
-        if(myFileChooser.getOption() == ChooserConsts.APPROVEOPTION){
-            System.out.println("APPROVE");
-            new XMLFile(myFileChooser.getSelectedFile().getPath(), controller).readFile();
-            myFileChooser.setOption(ChooserConsts.DONOTHINGOPTION);
-        }
+
     }
 
 }

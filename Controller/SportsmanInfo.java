@@ -6,6 +6,7 @@ import Model.SportsmanInfoData;
 import View.MainFrame;
 
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Sinelnikov on 29.03.2017.
@@ -77,16 +78,12 @@ public class SportsmanInfo {
         sportsmanInfoData.addSportsman(sportsman2);
         sportsmanInfoData.addSportsman(sportsman3);
         mainFrame = new MainFrame(this);
-
         mainFrame.getMainFrame().setVisible(true);
     }
 
 
     public void deleteFIOSport(String name, String secondName, String thirdname, Sport sport) {
-        //  int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
         sportsmanInfoData.deleteSportsman(name, secondName, thirdname, sport);
-        // int numberAfterDeletion = sportsmanInfoData.getSportsmanList().size();
-        // JOptionPane.showMessageDialog(mainFrame.getMainFrame(), "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
         refreshMainFrame();
     }
 
@@ -115,10 +112,7 @@ public class SportsmanInfo {
 
 
     public void deleteFIORank(String name, String secondName, String thirdName, String rank) {
-        //  int numberBeforeDeletion = sportsmanInfoData.getSportsmanList().size();
         sportsmanInfoData.deleteSportsman(name, secondName, thirdName, rank);
-        // int numberAfterDeletion = sportsmanInfoData.getSportsmanList().size();
-        // JOptionPane.showMessageDialog(mainFrame.getMainFrame(), "Удалило "+(numberBeforeDeletion-numberAfterDeletion));
         refreshMainFrame();
     }
 
