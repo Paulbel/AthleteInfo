@@ -25,11 +25,12 @@ public class XMLFile {
     private SportsmanInfo controller;
     private List<Sportsman> sportsmanList;
 
-    public XMLFile(String fileName, SportsmanInfo controller){
+    public XMLFile(String fileName, SportsmanInfo controller) {
         this.fileName = fileName;
         this.controller = controller;
         sportsmanList = controller.getSportsmanInfoData().getSportsmanList();
     }
+
     public void writeFile() throws IOException, TransformerException, ParserConfigurationException {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
@@ -39,8 +40,7 @@ public class XMLFile {
         document.appendChild(rootElement);
 
 
-
-        for (int index = 0; index < sportsmanList.size(); index++){
+        for (int index = 0; index < sportsmanList.size(); index++) {
             Sportsman sportsman = sportsmanList.get(index);
             Element sportsmanElement = document.createElement(XMLConst.SPORTSMAN);
             rootElement.appendChild(sportsmanElement);
@@ -72,7 +72,8 @@ public class XMLFile {
             transformer.transform(source, result);
         }
     }
-    void readFile(){
+
+    void readFile() {
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
         try {
             SAXParser saxParser = saxParserFactory.newSAXParser();

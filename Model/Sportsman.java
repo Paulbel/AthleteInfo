@@ -12,11 +12,12 @@ public class Sportsman {
     private String rank;
     private String lineup;
     private Sport sport;
+
     public Sportsman() {
 
     }
 
-    public void setSport(Sport sport){
+    public void setSport(Sport sport) {
         this.sport = sport;
     }
 
@@ -32,21 +33,19 @@ public class Sportsman {
         this.thirdName = thirdName;
     }
 
-    public void setLineup(int number){
+    public void setLineup(int number) {
         lineup = sport.getLineup(number);
     }
 
-    public void setLineup(String lineup){
+    public void setLineup(String lineup) {
         this.lineup = lineup;
     }
 
-    public void setPosition(int indexInPositionArrayNumber)
-    {
+    public void setPosition(int indexInPositionArrayNumber) {
         position = sport.getPositions()[indexInPositionArrayNumber];
     }
 
-    public void setPosition(String position)
-    {
+    public void setPosition(String position) {
         this.position = position;
     }
 
@@ -58,8 +57,7 @@ public class Sportsman {
         rank = sport.getRanks()[number];
     }
 
-    public void setRank(String rank)
-    {
+    public void setRank(String rank) {
         this.rank = rank;
     }
 

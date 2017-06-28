@@ -1,10 +1,8 @@
 package Model;
 
+import Controller.MyFileChooser;
 import Controller.SportsmanInfo;
-import View.MainFrame;
 
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,21 +12,27 @@ import java.awt.event.ActionListener;
 
 public class OpenFileListener implements ActionListener {
     private SportsmanInfo controller;
-    private JFileChooser fileChooser;
+    private MyFileChooser myFileChooser;
 
-    public OpenFileListener(SportsmanInfo controller){
+    public OpenFileListener(SportsmanInfo controller, MyFileChooser fileChooser) {
         this.controller = controller;
-        fileChooser = new JFileChooser();
-        fileChooser.setMultiSelectionEnabled(false);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "XML Формат", "xml");
-        fileChooser.setFileFilter(filter);
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fileChooser.setDialogTitle("Загрузить файл");
+        this.myFileChooser = fileChooser;
     }
+
     public void actionPerformed(ActionEvent e) {
-        if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-                new XMLFile(fileChooser.getSelectedFile().getPath(), controller).readFile();
-        }
+
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (myFileChooser.showDialog() == ChooserConsts.OKOPTION) {
+                    new XMLFile(myFileChooser.getSelectedFile().getPath(), controller).readFile();
+                    myFileChooser.setOption(ChooserConsts.WAITOPTION);
+                }
+            }
+        });
+        t1.start();
+
+
     }
+
 }
