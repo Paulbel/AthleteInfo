@@ -21,10 +21,7 @@ public class SportsmanInfo {
 
         Sport football = new Sport("Футбол", new String[]{"ВРТ", "ЦЗ", "ПЗ", "ЛЗ", "ЦП", "ЛП", "ПП", "ЦАП", "ФРВ"});
         sportsmanInfoData.addSport(football);
-        sportsmanInfoData.addSport(new Sport("Хыккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
-        sportsmanInfoData.addSport(new Sport("Хиккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
-        sportsmanInfoData.addSport(new Sport("Хоккуй", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
-        sportsmanInfoData.addSport(new Sport("Хаккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
+        sportsmanInfoData.addSport(new Sport("Хоккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
 
         RecordGenerator recordGenerator = new RecordGenerator(sportsmanInfoData);
         Sportsman sportsman = new Sportsman();
@@ -79,7 +76,7 @@ public class SportsmanInfo {
         sportsmanInfoData.addSportsman(sportsman1);
         sportsmanInfoData.addSportsman(sportsman2);
         sportsmanInfoData.addSportsman(sportsman3);
-        sportsmanInfoData.changeDataList(recordGenerator.generateList(100));
+        sportsmanInfoData.changeDataList(recordGenerator.generateList(1000));
         mainFrame = new MainFrame(this);
         mainFrame.getMainFrame().setVisible(true);
     }
