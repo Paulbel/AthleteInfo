@@ -34,4 +34,12 @@ public class Sport {
     public String getRankByIndex(int index) {
         return rank[index];
     }
+
+    public String[] getLineup() {
+        return lineup;
+    }
+
+    public String[] getRank() {
+        return rank;
+    }
 }

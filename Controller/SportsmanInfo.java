@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.RecordGenerator;
 import Model.Sport;
 import Model.Sportsman;
 import Model.SportsmanInfoData;
@@ -25,6 +26,7 @@ public class SportsmanInfo {
         sportsmanInfoData.addSport(new Sport("Хоккуй", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
         sportsmanInfoData.addSport(new Sport("Хаккей", new String[]{"ВРТ", "ЛЗ", "ПЗ", "ПН", "ЛН", "ЦН"}));
 
+        RecordGenerator recordGenerator = new RecordGenerator(sportsmanInfoData);
         Sportsman sportsman = new Sportsman();
         sportsman.setFirstName("Павел");
         sportsman.setSecondName("Синельников");
@@ -77,6 +79,7 @@ public class SportsmanInfo {
         sportsmanInfoData.addSportsman(sportsman1);
         sportsmanInfoData.addSportsman(sportsman2);
         sportsmanInfoData.addSportsman(sportsman3);
+        sportsmanInfoData.changeDataList(recordGenerator.generateList(100));
         mainFrame = new MainFrame(this);
         mainFrame.getMainFrame().setVisible(true);
     }

@@ -23,7 +23,7 @@ public class MainFrame {
     public MainFrame(SportsmanInfo controller) {
         this.controller = controller;
         mainFrame = new JFrame("Информация о спортсменах");
-        mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        mainFrame.setSize(1000, 800);
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainFrame.setLayout(new BorderLayout());
         JMenuBar workingOptionsMenuBar = new JMenuBar();
